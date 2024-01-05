@@ -8,3 +8,41 @@ rl.question('enter the number: ',(input)=>{
   console.log(typeof(input));
     rl.close();
 });
+//for example a simple calculator
+const readline = require('readline');
+let a, b, operator;
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout,
+});
+rl.question('Enter the first number: ', (input) => {
+  a = Number(input);
+  rl.question('Enter the second number: ', (input) => {
+    b = Number(input);
+    rl.question('Enter the operator: ', (input) => {
+      operator = input;
+      console.log(op(a, b, operator));
+      rl.close();
+    });
+  });
+});
+
+function op(a, b, operator) {
+  switch(operator) {
+    case '+':
+      return a + b;
+    case '-':
+      return a - b;
+    case '*':
+      return a * b;
+    case '/':
+      if(b != 0) {
+        return a / b;
+      } else {
+        return 'Error! Division by zero is not allowed.';
+      }
+    default:
+      return 'Error! Invalid operator.';
+  }
+}
+
